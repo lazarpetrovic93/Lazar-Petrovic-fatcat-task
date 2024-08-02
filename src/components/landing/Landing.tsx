@@ -1,11 +1,17 @@
 import clsx from 'clsx';
+import { Card } from '@homework-task/components/landing/Card';
 
-import { Card } from './Card.jsx';
+interface CardData {
+    title: string;
+    text: string;
+    link: string;
+}
 
-// eslint-disable-next-line no-undef
+interface LandingProps {}
+
 const vscodeProjectLink = `vscode://file/${__CWD__}`;
 
-const cards = [
+const cards: CardData[] = [
     {
         title: 'Transfer the project to TypeScript',
         text: 'Your first task involves transitioning this project from JavaScript to TypeScript.',
@@ -18,7 +24,7 @@ const cards = [
     },
     {
         title: 'Create a Form Generator Component',
-        text: 'Build a versatile React component with validation, API hook, and form rendering capabilities. ',
+        text: 'Build a versatile React component with validation, API hook, and form rendering capabilities.',
         link: vscodeProjectLink,
     },
     {
@@ -28,7 +34,7 @@ const cards = [
     },
 ];
 
-export const Landing = () => {
+export const Landing: React.FC<LandingProps> = () => {
     return (
         <section
             className={clsx(
@@ -82,10 +88,26 @@ export const Landing = () => {
                         'bg-black',
                         'text-white'
                     )}
+                    href="/task"
+                >
+                    <span className={clsx('text-lg')}>Go to Task</span>
+                    <img src="/media/landing/arrow.svg" alt="Arrow icon" />
+                </a>
+                <a
+                    className={clsx(
+                        'flex',
+                        'items-center',
+                        'gap-2',
+                        'rounded-lg',
+                        'px-4',
+                        'py-2',
+                        'bg-black',
+                        'text-white'
+                    )}
                     href={vscodeProjectLink}
                 >
                     <span className={clsx('text-lg')}>Read docs</span>
-                    <img src="/media/landing/arrow.svg" alt="" />
+                    <img src="/media/landing/arrow.svg" alt="Arrow icon" />
                 </a>
             </div>
             <img
@@ -97,7 +119,7 @@ export const Landing = () => {
                     'justify-self-center'
                 )}
                 src="/media/landing/hero.svg"
-                alt=""
+                alt="Hero illustration"
             />
             <div
                 className={clsx(
